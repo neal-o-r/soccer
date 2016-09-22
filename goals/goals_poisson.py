@@ -47,6 +47,15 @@ lambda_2_samples = mcmc.trace('lam2')[:]
 lambda_3_samples = mcmc.trace('lam3')[:]
 lambda_4_samples = mcmc.trace('lam4')[:]
 
+def KL_div(p1, p2):
+# Given a (possibly unnormalized) pair of PDF return the KL div
+	normp1 = p1 / np.sum(p1)
+	normp2 = p2 / np.sum(p2)
+	return np.sum(normp1 * np.log(normp1 / normp2), axis=0)
+
+
+
+
 # Plot histograms of the posterior samples.
 plt.hist(lambda_1_samples, histtype='stepfilled', bins=30, alpha=0.75, label="posterior of $\lambda_{93}$", color="#A60628")
 
@@ -61,7 +70,12 @@ plt.title(r"""Posterior distributions of the variables $\lambda_{93},\;\lambda_{
 plt.xlim([1, 2])
 plt.xlabel("Value of $\lambda_i$")
 plt.ylabel("Number of Samples")
+plt.show()
 
+print("\nThe KL Divergence between the samples is:\n"+\
+	"KL($93$|$94$=%.4f\n" %KL_div(lambda_1_samples,lambda_2_samples)\
+	+"KL($94$|$95$=%.4f\n" %KL_div(lambda_2_samples,lambda_3_samples)\
+	+"KL($93$|$99$=%.4f\n" %KL_div(lambda_1_samples,lambda_4_samples))
 
 #plt.savefig("lambdas.png")
 
