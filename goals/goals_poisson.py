@@ -1,4 +1,4 @@
-
+import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
 import numpy as np
 import pymc as pm
