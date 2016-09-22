@@ -73,9 +73,9 @@ plt.ylabel("Number of Samples")
 plt.show()
 
 print("\nThe KL Divergence between the samples is:\n"+\
-	"KL($93$|$94$=%.4f\n" %KL_div(lambda_1_samples,lambda_2_samples)\
-	+"KL($94$|$95$=%.4f\n" %KL_div(lambda_2_samples,lambda_3_samples)\
-	+"KL($93$|$99$=%.4f\n" %KL_div(lambda_1_samples,lambda_4_samples))
+	 "KL(93|94)=%.4f\n" %KL_div(lambda_1_samples,lambda_2_samples)\
+	+"KL(94|95_=%.4f\n" %KL_div(lambda_2_samples,lambda_3_samples)\
+	+"KL(93|99)=%.4f\n" %KL_div(lambda_1_samples,lambda_4_samples))
 
 #plt.savefig("lambdas.png")
 
