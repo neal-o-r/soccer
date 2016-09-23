@@ -25,6 +25,22 @@ def get_results(home_goals, away_goals):
 		%d finished in a home win\n
 		%d finished in an away win\n
 		%d finished in a draw""" %(mask.sum(), hwins, awins, draws))
+	
+
+	
+	n_goals = (df_res.home_goals + df_res.away_goals).values
+
+	l1 = []
+	l2 = []
+	_ =  [l1.extend([val]*n_goals[i]) for i, val in enumerate(df_res.home_goals.values)]
+	_ =  [l2.extend([val]*n_goals[i]) for i, val in enumerate(df_res.away_goals.values)]
+
+	return l1, l2, df_res
+	df_mins['home_goals'] =	l1
+	df_mins['away_goals'] =	l2
+
+	return df_res
+	'''
 
 	hgoals = []
 	agoals = []
@@ -51,5 +67,6 @@ def get_results(home_goals, away_goals):
 
 	plt.hist(hgoals, bins=90, alpha=1, label='Home Goals')
 	plt.hist(agoals, bins=90, alpha=1, label='Away Goals')
-	plt.legend()
+	plt.legend(loc='left')
 	plt.show()
+	'''
