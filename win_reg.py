@@ -27,7 +27,10 @@ def win_logit(home_score, away_score, time, team='home'):
 	print "The cross-validated model score is: %.2f%%" %(100*scores.mean())
 
 
-	results =  model.predict_proba(np.array([1, home_score, away_score, time]))
+        features = [1, home_score, away_score, time]   
+        features = np.array(features).reshape((1,-1))    
+        
+        results =  model.predict_proba(features)
 	print("Given a score of %d - %d at %d minutes, the probability of the %s team winning is %.2f%%"
 		%(home_score, away_score, time, team, 100*results[0][1]))	
 
